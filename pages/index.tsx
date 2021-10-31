@@ -61,7 +61,7 @@ const Home: NextPage = () => {
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: url(${currentFont.files.regular}) format('truetype');
+      src: url(${currentFont.files.regular.replace('http://', 'https://')}) format('truetype');
     }
 
     body {
