@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         const { data } = await axios.get('/api/fonts');
 
         setFontsData({ data: data.items, loading: false, error: null });
-      } catch (err) {
+      } catch (err:any) {
         setFontsData({ data: null, loading: false, error: err.message });
       }
     };
@@ -32,7 +32,13 @@ const Home: NextPage = () => {
     LoadData();
   }, []);
 
-  const fontUrl = fontsData.data?.find((item) => item.family === 'Fruktur');
+  type font = {
+    family: string;
+    files: { regular: string };
+    variants: string[];
+  };
+
+  const fontUrl = fontsData.data?.find((item:font) => item.family === 'Fruktur');
 
   const [ currentFont, setCurrentFont ] = useState({
     family: 'Roboto',
